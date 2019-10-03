@@ -12,6 +12,21 @@
   padding: 50px 0;
 }
 
+#green{
+	background-color: #66DC6D;
+}
+
+#red{ 
+	background-color: #ED3833;
+}
+
+#yellow{
+	background-color: #FEF250;
+}
+
+#blue{
+	background-color: #3093EA;
+}
 .colorButton{
 	padding: 50px 50px;
 }
