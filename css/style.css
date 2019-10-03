@@ -1,0 +1,16 @@
+#importantInfo{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+#gameBoard{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin: auto 0;
+}
+
+.colorButton{
+	padding: 50px 50px;
+}
