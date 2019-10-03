@@ -1,7 +1,14 @@
+body{
+	background-color:#000;
+}
+
 #importantInfo{
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	color: #fff;
+	font-size: 25px;
+	padding: 25px 0 0 0;
 }
 
 #gameBoard{
@@ -30,6 +37,14 @@
 #blue{
 	background-color: #3093EA;
 	border-bottom-right-radius: 300px;
+}
+
+.gameButton{
+	margin: 0 20px;
+}
+
+.gameInfo{
+	margin: 0 20px;
 }
 .colorButton{
 	padding: 50px 50px;
