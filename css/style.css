@@ -6,27 +6,32 @@
 
 #gameBoard{
   display: grid;
-  grid-template-columns: 150px 150px;
-  grid-template-rows: 150px 150px;
+  grid-template-columns: 250px 250px;
+  grid-template-rows: 250px 250px;
   justify-content: center;
-  padding: 50px 0;
+  padding: 100px 0;
 }
 
 #green{
 	background-color: #66DC6D;
+	border-top-left-radius: 300px;
 }
 
 #red{ 
 	background-color: #ED3833;
+	border-top-right-radius: 300px;
 }
 
 #yellow{
 	background-color: #FEF250;
+	border-bottom-left-radius: 300px;
 }
 
 #blue{
 	background-color: #3093EA;
+	border-bottom-right-radius: 300px;
 }
 .colorButton{
 	padding: 50px 50px;
+	text-align: center;
 }
