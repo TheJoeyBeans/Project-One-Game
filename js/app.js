@@ -4,6 +4,8 @@ const yellowButton = document.getElementById('yellow');
 const blueButton = document.getElementById('blue');
 const startButton = document.getElementById('start');
 const resetButton = document.getElementById('reset');
+const cpuInput = [];
+const userInput = [];
 
 startButton.addEventListener('click', (e) =>{
 	console.log('buttonWorks');
@@ -14,18 +16,22 @@ resetButton.addEventListener('click', (e) =>{
 })
 
 greenButton.addEventListener('click', (e) =>{
-	console.log('buttonWorks');
+	const green = e.target.id;
+	console.log(e.target.id);
 });
 
 redButton.addEventListener('click', (e) =>{
-	console.log('buttonWorks');
+	const red = e.target.id;
+	console.log(e.target.id);
 });
 
 yellowButton.addEventListener('click', (e) =>{
-	console.log('buttonWorks');
+	const yellow = e.target.id;
+	console.log(e.target.id);
 });
 
 blueButton.addEventListener('click', (e) =>{
-	console.log('buttonWorks');
+	const blue = e.target.id;
+	console.log(e.target.id);
 });
 
