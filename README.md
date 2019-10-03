@@ -1,12 +1,18 @@
 # Project-One-Game
 GA Project One Game
 
+-Game Descritpion: 
+Simon is a game of memorization. The goal of the game is to match the actions of the computer until you no longer can. 
+
+
 
 Users Stories: 
 SIMON
 -User clicks on the start button to begin the game. 
 
--First button glows and user clicks on that button
+-First button glows 
+
+-user clicks on that button 
 
 -Next the first button glows again along with a second button. 
 
@@ -22,6 +28,7 @@ Round 1: 5 buttons
 Round 2: 7 buttons
 Round 3: 10 buttons
 
+-Declaring a winner:
 
 Stretch Goals: 
 Infinite Mode: Go until the user fails. 
