@@ -4,7 +4,7 @@ const yellowButton = document.getElementById('yellow');
 const blueButton = document.getElementById('blue');
 const startButton = document.getElementById('start');
 const resetButton = document.getElementById('reset');
-const cpuInput = [];//Going to store the input of the game
+const cpuInput = [1];//Going to store the input of the game
 const userInput = [];//Going to store the input of the user
 
 let greenSound = new Audio();//The sound effect for the green button
@@ -81,7 +81,13 @@ const sounds = { //Houses the sound effect functions for the game
 
 // glows.greenGlow();
 
-
+// const game = {
+// 	startRound(){
+// 		if(cpuInput.length < 1){
+// 			console.log('Bongos');
+// 		}
+// 	}
+// }
 
 
 
