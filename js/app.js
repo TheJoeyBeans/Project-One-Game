@@ -7,6 +7,9 @@ const resetButton = document.getElementById('reset');
 const cpuInput = [];//Going to store the input of the game
 const userInput = [];//Going to store the input of the user
 
+let greenSound = new Audio();
+greenSound.src = 'Sounds/GreenSound.mp3';
+
 startButton.addEventListener('click', (e) =>{
 	console.log('buttonWorks');
 });
@@ -17,6 +20,7 @@ resetButton.addEventListener('click', (e) =>{
 
 greenButton.addEventListener('click', (e) =>{
 	const green = e.target.id;//'green' is stored here
+	sounds.playGreenSound();
 	console.log(green);
 });
 
@@ -35,3 +39,8 @@ blueButton.addEventListener('click', (e) =>{
 	console.log(blue);
 });
 
+const sounds = {
+	playGreenSound(){
+		greenSound.play();
+	}
+}
