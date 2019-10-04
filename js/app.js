@@ -27,6 +27,10 @@ resetButton.addEventListener('click', (e) =>{
 	console.log('buttonWorks');
 })
 
+// blueButton.addEventListener('mouseover', (e) =>{
+// 	console.log('Hover works');
+// })
+
 greenButton.addEventListener('click', (e) =>{
 	const green = e.target.id;//'green' is stored here
 	sounds.playGreenSound();
@@ -69,7 +73,13 @@ const sounds = { //Houses the sound effect functions for the game
 	}
 }
 
+// const glows = {
+// 	greenGlow(){
+// 		greenButton.style.backgroudColor = '#71e863'
+// 	}
+// }
 
+// glows.greenGlow();
 
 
 
