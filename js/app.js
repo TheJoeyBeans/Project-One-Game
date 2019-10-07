@@ -20,7 +20,7 @@ let blueSound = new Audio();//Sound effect for the blue button.
 blueSound.src = 'Sounds/BlueSound.mp3';
 
 startButton.addEventListener('click', (e) =>{
-	console.log('buttonWorks');
+	game.startRound();
 });
 
 resetButton.addEventListener('click', (e) =>{
@@ -87,12 +87,20 @@ const game = {
 		const colorValue = Math.ceil(Math.random() * 4);
 		if (colorValue === 1){ // green
 			sounds.playGreenSound();
+			greenButton.style.boxShadow = '0px -15px 90px rgba(128, 237, 133, .6)';
+			console.log(colorValue);
 		} else if(colorValue === 2){ //red
 			sounds.playRedSound();
+			redButton.style.boxShadow = '0px -15px 90px rgba(237, 56, 51, .6)';
+			console.log(colorValue);
 		} else if(colorValue === 3){ //yellow
 			sounds.playYellowSound();
+			yellowButton.style.boxShadow = '0px -15px 90px rgba(249, 242, 80, .6)';
+			console.log(colorValue);
 		} else if(colorValue === 4){ //blue
 			sounds.playBlueSound();
+			blueButton.style.boxShadow = '0px -15px 90px rgba(101, 147, 234, .6)';
+			console.log(colorValue);
 		}
 	},
 	startRound(){
