@@ -73,23 +73,32 @@ const sounds = { //Houses the sound effect functions for the game
 	}
 }
 
-const colors = {
-	setGreenGlow(){
+const colors = {//Houses all color related methods.
+	setGreenGlow(){//Causes the green button to glow
 		greenButton.style.boxShadow = '0px -15px 90px rgba(128, 237, 133, .6)';
 	},
-	clearGreenGlow(){
+	clearGreenGlow(){//Takes the glow away from the green button
 		greenButton.style.boxShadow ='';
+	},
+	setRedGlow(){//Cause the red button to glow
+		redButton.style.boxShadow = '0px -15px 90px rgba(237, 56, 51, .6)';
+	},
+	clearRedGlow(){//Takes away the glow from the red button
+		redButton.style.boxShadow = '';
+	},
+	setYellowGlow(){//Causes yellow button to glow
+		yellowButton.style.boxShadow = '0px -15px 90px rgba(249, 242, 80, .6)';		
+	},
+	clearYellowGlow(){//Takes away the glow from the yellow button
+		yellowButton.style.boxShadow = '';
+	},
+	setBlueGlow(){//Causes blue button to glow
+		blueButton.style.boxShadow = '0px -15px 90px rgba(101, 147, 234, .6)';
+	},
+	clearBlueGlow(){//Takes away the glow from the blue button
+		blueButton.style.boxShadow = '';
 	}
 }
-
-// const glows = {
-// 	greenGlow(){
-// 		greenButton.style.backgroudColor = '#71e863'
-// 	}
-// }
-
-// glows.greenGlow();
-
 
 const game = {
 	randomColor(){ //Picks a random color and plays its sound and makes its space glow.
@@ -101,15 +110,18 @@ const game = {
 			console.log(colorValue);
 		} else if(colorValue === 2){ //red
 			sounds.playRedSound();
-			redButton.style.boxShadow = '0px -15px 90px rgba(237, 56, 51, .6)';
+			colors.setRedGlow();
+			setTimeout(colors.clearRedGlow,1000);	
 			console.log(colorValue);
 		} else if(colorValue === 3){ //yellow
 			sounds.playYellowSound();
-			yellowButton.style.boxShadow = '0px -15px 90px rgba(249, 242, 80, .6)';
+			colors.setYellowGlow();
+			setTimeout(colors.clearYellowGlow,1000);
 			console.log(colorValue);
 		} else if(colorValue === 4){ //blue
 			sounds.playBlueSound();
-			blueButton.style.boxShadow = '0px -15px 90px rgba(101, 147, 234, .6)';
+			colors.setBlueGlow();
+			setTimeout(colors.clearBlueGlow,1000);
 			console.log(colorValue);
 		}
 	},
