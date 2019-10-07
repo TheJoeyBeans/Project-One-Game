@@ -4,7 +4,7 @@ const yellowButton = document.getElementById('yellow');
 const blueButton = document.getElementById('blue');
 const startButton = document.getElementById('start');
 const resetButton = document.getElementById('reset');
-const cpuInput = [1];//Going to store the input of the game
+const cpuInput = [];//Going to store the input of the game
 const userInput = [];//Going to store the input of the user
 
 let greenSound = new Audio();//The sound effect for the green button
@@ -81,13 +81,26 @@ const sounds = { //Houses the sound effect functions for the game
 
 // glows.greenGlow();
 
-// const game = {
-// 	startRound(){
-// 		if(cpuInput.length < 1){
-// 			console.log('Bongos');
-// 		}
-// 	}
-// }
+
+const game = {
+	randomColor(){ //Picks a random color and plays its sound and makes its space glow.
+		const colorValue = Math.ceil(Math.random() * 4);
+		if (colorValue === 1){ // green
+			sounds.playGreenSound();
+		} else if(colorValue === 2){ //red
+			sounds.playRedSound();
+		} else if(colorValue === 3){ //yellow
+			sounds.playYellowSound();
+		} else if(colorValue === 4){ //blue
+			sounds.playBlueSound();
+		}
+	},
+	startRound(){
+		if(cpuInput.length < 1){ //so long as the cpu input array is empty, the startRound function will run
+			game.randomColor();//a random color should be selected. 
+		}
+	}
+}
 
 
 
