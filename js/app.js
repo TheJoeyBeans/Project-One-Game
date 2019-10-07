@@ -7,6 +7,7 @@ const resetButton = document.getElementById('reset');
 const cpuInput = [];//Going to store the input of the game
 const userInput = [];//Going to store the input of the user
 
+//SOUNDS
 let greenSound = new Audio();//The sound effect for the green button
 greenSound.src = 'Sounds/GreenSound.mp3';
 
@@ -19,17 +20,15 @@ yellowSound.src = 'Sounds/YellowSound.mp3';
 let blueSound = new Audio();//Sound effect for the blue button.
 blueSound.src = 'Sounds/BlueSound.mp3';
 
+
+//BUTTONS
 startButton.addEventListener('click', (e) =>{
 	game.startRound();
 });
 
 resetButton.addEventListener('click', (e) =>{
 	console.log('buttonWorks');
-})
-
-// blueButton.addEventListener('mouseover', (e) =>{
-// 	console.log('Hover works');
-// })
+});
 
 greenButton.addEventListener('click', (e) =>{
 	const green = e.target.id;//'green' is stored here
@@ -55,6 +54,7 @@ blueButton.addEventListener('click', (e) =>{
 	console.log(blue);
 });
 
+
 const sounds = { //Houses the sound effect functions for the game
 	playGreenSound(){ //Plays green sound effect
 		greenSound.play(); 
@@ -73,6 +73,15 @@ const sounds = { //Houses the sound effect functions for the game
 	}
 }
 
+const colors = {
+	setGreenGlow(){
+		greenButton.style.boxShadow = '0px -15px 90px rgba(128, 237, 133, .6)';
+	},
+	clearGreenGlow(){
+		greenButton.style.boxShadow ='';
+	}
+}
+
 // const glows = {
 // 	greenGlow(){
 // 		greenButton.style.backgroudColor = '#71e863'
@@ -87,7 +96,8 @@ const game = {
 		const colorValue = Math.ceil(Math.random() * 4);
 		if (colorValue === 1){ // green
 			sounds.playGreenSound();
-			greenButton.style.boxShadow = '0px -15px 90px rgba(128, 237, 133, .6)';
+			colors.setGreenGlow();
+			setTimeout(colors.clearGreenGlow,1000);
 			console.log(colorValue);
 		} else if(colorValue === 2){ //red
 			sounds.playRedSound();
