@@ -5,6 +5,7 @@ const blueButton = document.getElementById('blue');
 const startButton = document.getElementById('start');
 const resetButton = document.getElementById('reset');
 const pointTotal = document.getElementById('points');
+const currentRound = document.getElementById('rounds');
 let cpuInput = [];//Going to store the input of the game
 let userInput = [];//Going to store the input of the user
 
@@ -24,11 +25,16 @@ blueSound.src = 'Sounds/BlueSound.mp3';
 
 //BUTTONS
 startButton.addEventListener('click', (e) =>{
-	game.startRound();
+	game.play();
 });
 
 resetButton.addEventListener('click', (e) =>{
-	console.log('buttonWorks');
+	game.clearUserInput();
+	game.clearCPUInput();
+	game.points = 0;
+	game.round = 0;
+	pointTotal.textContent = `Points: ${game.points}`;
+	currentRound.textContent = `Round: ${game.rounds}`;
 });
 
 greenButton.addEventListener('click', (e) =>{
@@ -180,13 +186,11 @@ const game = {
 		} 
 	},
 
-	startRound(){ //Gets the round started when user hits start button
+	play(){ //Gets the round started when user hits start button
 	 if(cpuInput.length < 1){ //If the length of the CPU input is less than one, you can start a round. 
 	 this.randomColor(); //A random color will be selected.
 	} else if(cpuInput.length >= 1){ //Otherwise, if CPU input.length is greater than one
 	 this.showPreviousColors();
-	} else { //Otherwise, you'll be alerted that the round has already started. 
-	 alert(`You've already started a round`);
 	}
 	},
 
