@@ -106,22 +106,22 @@ const game = {
 		if (colorValue === 1){ // green
 			sounds.playGreenSound();
 			colors.setGreenGlow();
-			setTimeout(colors.clearGreenGlow,1000);
+			setTimeout(colors.clearGreenGlow,1500);
 			console.log(colorValue);
 		} else if(colorValue === 2){ //red
 			sounds.playRedSound();
 			colors.setRedGlow();
-			setTimeout(colors.clearRedGlow,1000);	
+			setTimeout(colors.clearRedGlow,1500);	
 			console.log(colorValue);
 		} else if(colorValue === 3){ //yellow
 			sounds.playYellowSound();
 			colors.setYellowGlow();
-			setTimeout(colors.clearYellowGlow,1000);
+			setTimeout(colors.clearYellowGlow,1500);
 			console.log(colorValue);
 		} else if(colorValue === 4){ //blue
 			sounds.playBlueSound();
 			colors.setBlueGlow();
-			setTimeout(colors.clearBlueGlow,1000);
+			setTimeout(colors.clearBlueGlow,1500);
 			console.log(colorValue);
 		}
 	},
