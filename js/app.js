@@ -148,12 +148,24 @@ const game = {
 		console.log(cpuInput);
 	} return cpuInput;
 	},
-	showPreviousColors(){
-		for (let i = 0; i <= cpuInput.length - 1; i++){
-			if (cpuInput[i] === 1){
+	showPreviousColors(){//Shows the previous colors and rings there sound for user reference
+		for (let i = 0; i <= cpuInput.length; i++){
+			if (cpuInput[i] === 1){//For Green
 				sounds.playGreenSound();
 				colors.setGreenGlow();
 				setTimeout(colors.clearGreenGlow,1500);
+			} else if(cpuInput[i] === 2){//For Red
+				sounds.playRedSound();
+				colors.setRedGlow();
+				setTimeout(colors.clearRedGlow,1500);
+			} else if(cpuInput[i] === 3){//For Yellow
+				sounds.playYellowSound();
+				colors.setYellowGlow();
+				setTimeout(colors.clearYellowGlow,1500);
+			} else if(cpuInput[i] === 4){//For Blue
+				sounds.playBlueSound();
+				colors.setBlueGlow();
+				setTimeout(colors.clearBlueGlow,1500);
 			}
 		}
 	},
@@ -163,6 +175,7 @@ const game = {
 	 this.randomColor(); //A random color will be selected.
 	} else if(cpuInput.length >= 1){ //Otherwise, if CPU input.length is greater than one
 	 this.showPreviousColors();
+	 this.randomColor();
 	} else { //Otherwise, you'll be alerted that the round has already started. 
 	 alert(`You've already started a round`);
 	}
