@@ -4,6 +4,7 @@ const yellowButton = document.getElementById('yellow');
 const blueButton = document.getElementById('blue');
 const startButton = document.getElementById('start');
 const resetButton = document.getElementById('reset');
+const pointTotal = document.getElementById('points');
 const cpuInput = [];//Going to store the input of the game
 const userInput = [];//Going to store the input of the user
 
@@ -32,31 +33,38 @@ resetButton.addEventListener('click', (e) =>{
 
 greenButton.addEventListener('click', (e) =>{
 	const green = e.target.id;//'green' is stored here
-	sounds.playGreenSound();
-	userInput.push(1);
+	sounds.playGreenSound(); //green sound plays
+	userInput.push(1); //green value is sent to user input
+	game.inputCheck();
 	console.log(green);
 	console.log(userInput);
 });
 
 redButton.addEventListener('click', (e) =>{
 	const red = e.target.id;//'red' is stored here
-	sounds.playRedSound();
-	userInput.push(2);
+	sounds.playRedSound(); //red sound plays
+	userInput.push(2); //red value is sent to user input
+	game.inputCheck();
 	console.log(red);
+	console.log(userInput);
 });
 
 yellowButton.addEventListener('click', (e) =>{
 	const yellow = e.target.id;//'yellow' is stored here
-	sounds.playYellowSound();
-	userInput.push(3);
+	sounds.playYellowSound(); //yellow sound plays
+	userInput.push(3); //yellow value is sent to user input
+	game.inputCheck();
 	console.log(yellow);
+	console.log(userInput);
 });
 
 blueButton.addEventListener('click', (e) =>{
 	const blue = e.target.id;//'blue' is stored here
-	sounds.playBlueSound();
-	userInput.push(4);
+	sounds.playBlueSound();//blue sound plays
+	userInput.push(4);//blue value is sent to user input
+	game.inputCheck();
 	console.log(blue);
+	console.log(userInput);
 });
 
 
@@ -102,46 +110,89 @@ const colors = {//Houses all color related methods.
 	},
 	clearBlueGlow(){//Takes away the glow from the blue button
 		blueButton.style.boxShadow = '';
-	},
+	}
+	
+	// randomColor(){ //Picks a random color and plays its sound and makes its space glow.
+	// const colorValue = Math.ceil(Math.random() * 4);
+	// if (colorValue === 1){ // green
+	// 	sounds.playGreenSound();
+	// 	this.setGreenGlow();
+	// 	setTimeout(this.clearGreenGlow,1500);
+	// 	cpuInput.push(colorValue);//green value is sent to cpu input
+	// 	console.log(colorValue);
+	// 	console.log(cpuInput);
+	// } else if(colorValue === 2){ //red
+	// 	sounds.playRedSound();
+	// 	this.setRedGlow();
+	// 	setTimeout(this.clearRedGlow,1500);
+	// 	cpuInput.push(colorValue);//red value is sent to cpu input	
+	// 	console.log(colorValue);
+	// 	console.log(cpuInput);
+	// } else if(colorValue === 3){ //yellow
+	// 	sounds.playYellowSound();
+	// 	this.setYellowGlow();
+	// 	setTimeout(this.clearYellowGlow,1500);
+	// 	cpuInput.push(colorValue);//yellow value is sent to cpu input
+	// 	console.log(colorValue);
+	// 	console.log(cpuInput);
+	// } else if(colorValue === 4){ //blue
+	// 	sounds.playBlueSound();
+	// 	this.setBlueGlow();
+	// 	setTimeout(this.clearBlueGlow,1500);
+	// 	cpuInput.push(colorValue);//blue input is sent to cpu input
+	// 	console.log(colorValue);
+	// 	console.log(cpuInput);
+	// } return cpuInput;
+	// } 
+}
+
+const game = {
+	points: 0,
+	rounds: 0,
 	randomColor(){ //Picks a random color and plays its sound and makes its space glow.
 	const colorValue = Math.ceil(Math.random() * 4);
 	if (colorValue === 1){ // green
 		sounds.playGreenSound();
-		this.setGreenGlow();
-		setTimeout(this.clearGreenGlow,1500);
-		cpuInput.push(colorValue);
+		colors.setGreenGlow();
+		setTimeout(colors.clearGreenGlow,1500);
+		cpuInput.push(colorValue);//green value is sent to cpu input
 		console.log(colorValue);
 		console.log(cpuInput);
 	} else if(colorValue === 2){ //red
 		sounds.playRedSound();
-		this.setRedGlow();
-		setTimeout(this.clearRedGlow,1500);
-		cpuInput.push(colorValue);	
+		colors.setRedGlow();
+		setTimeout(colors.clearRedGlow,1500);
+		cpuInput.push(colorValue);//red value is sent to cpu input	
 		console.log(colorValue);
 		console.log(cpuInput);
 	} else if(colorValue === 3){ //yellow
 		sounds.playYellowSound();
-		this.setYellowGlow();
-		setTimeout(this.clearYellowGlow,1500);
-		cpuInput.push(colorValue);
+		colors.setYellowGlow();
+		setTimeout(colors.clearYellowGlow,1500);
+		cpuInput.push(colorValue);//yellow value is sent to cpu input
 		console.log(colorValue);
 		console.log(cpuInput);
 	} else if(colorValue === 4){ //blue
 		sounds.playBlueSound();
-		this.setBlueGlow();
-		setTimeout(this.clearBlueGlow,1500);
-		cpuInput.push(colorValue);
+		colors.setBlueGlow();
+		setTimeout(colors.clearBlueGlow,1500);
+		cpuInput.push(colorValue);//blue input is sent to cpu input
 		console.log(colorValue);
 		console.log(cpuInput);
 	} return cpuInput;
-	} 
-}
-
-const game = {
-	startRound(){
-		// if(cpuInput.length < 1){ //so long as the cpu input array is empty, the startRound function will run
-			colors.randomColor();//a random color should be selected. 
-		// }
+}, 
+	startRound(){ //Gets the round started when user hits start button
+	 if(cpuInput.length < 1){ //If the length of the CPU input is less than one, you can start a round. 
+	 game.randomColor(); //A random color will be selected.
+	} else { //Otherwise, you'll be alerted that the round has already started. 
+	 alert(`You've already started a round`);
+	}
+},
+	inputCheck(){
+	 if(userInput.toString() === cpuInput.toString()){
+	 	this.points++;
+	 	pointTotal.textContent = `Points: ${this.points}`;
+	 }
 	}
 }
 
