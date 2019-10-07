@@ -33,24 +33,29 @@ resetButton.addEventListener('click', (e) =>{
 greenButton.addEventListener('click', (e) =>{
 	const green = e.target.id;//'green' is stored here
 	sounds.playGreenSound();
+	userInput.push(1);
 	console.log(green);
+	console.log(userInput);
 });
 
 redButton.addEventListener('click', (e) =>{
 	const red = e.target.id;//'red' is stored here
 	sounds.playRedSound();
+	userInput.push(2);
 	console.log(red);
 });
 
 yellowButton.addEventListener('click', (e) =>{
 	const yellow = e.target.id;//'yellow' is stored here
 	sounds.playYellowSound();
+	userInput.push(3);
 	console.log(yellow);
 });
 
 blueButton.addEventListener('click', (e) =>{
 	const blue = e.target.id;//'blue' is stored here
 	sounds.playBlueSound();
+	userInput.push(4);
 	console.log(blue);
 });
 
@@ -97,38 +102,46 @@ const colors = {//Houses all color related methods.
 	},
 	clearBlueGlow(){//Takes away the glow from the blue button
 		blueButton.style.boxShadow = '';
-	}
+	},
+	randomColor(){ //Picks a random color and plays its sound and makes its space glow.
+	const colorValue = Math.ceil(Math.random() * 4);
+	if (colorValue === 1){ // green
+		sounds.playGreenSound();
+		this.setGreenGlow();
+		setTimeout(this.clearGreenGlow,1500);
+		cpuInput.push(colorValue);
+		console.log(colorValue);
+		console.log(cpuInput);
+	} else if(colorValue === 2){ //red
+		sounds.playRedSound();
+		this.setRedGlow();
+		setTimeout(this.clearRedGlow,1500);
+		cpuInput.push(colorValue);	
+		console.log(colorValue);
+		console.log(cpuInput);
+	} else if(colorValue === 3){ //yellow
+		sounds.playYellowSound();
+		this.setYellowGlow();
+		setTimeout(this.clearYellowGlow,1500);
+		cpuInput.push(colorValue);
+		console.log(colorValue);
+		console.log(cpuInput);
+	} else if(colorValue === 4){ //blue
+		sounds.playBlueSound();
+		this.setBlueGlow();
+		setTimeout(this.clearBlueGlow,1500);
+		cpuInput.push(colorValue);
+		console.log(colorValue);
+		console.log(cpuInput);
+	} return cpuInput;
+	} 
 }
 
 const game = {
-	randomColor(){ //Picks a random color and plays its sound and makes its space glow.
-		const colorValue = Math.ceil(Math.random() * 4);
-		if (colorValue === 1){ // green
-			sounds.playGreenSound();
-			colors.setGreenGlow();
-			setTimeout(colors.clearGreenGlow,1500);
-			console.log(colorValue);
-		} else if(colorValue === 2){ //red
-			sounds.playRedSound();
-			colors.setRedGlow();
-			setTimeout(colors.clearRedGlow,1500);	
-			console.log(colorValue);
-		} else if(colorValue === 3){ //yellow
-			sounds.playYellowSound();
-			colors.setYellowGlow();
-			setTimeout(colors.clearYellowGlow,1500);
-			console.log(colorValue);
-		} else if(colorValue === 4){ //blue
-			sounds.playBlueSound();
-			colors.setBlueGlow();
-			setTimeout(colors.clearBlueGlow,1500);
-			console.log(colorValue);
-		}
-	},
 	startRound(){
-		if(cpuInput.length < 1){ //so long as the cpu input array is empty, the startRound function will run
-			game.randomColor();//a random color should be selected. 
-		}
+		// if(cpuInput.length < 1){ //so long as the cpu input array is empty, the startRound function will run
+			colors.randomColor();//a random color should be selected. 
+		// }
 	}
 }
 
