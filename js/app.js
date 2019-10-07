@@ -111,39 +111,6 @@ const colors = {//Houses all color related methods.
 	clearBlueGlow(){//Takes away the glow from the blue button
 		blueButton.style.boxShadow = '';
 	}
-	
-	// randomColor(){ //Picks a random color and plays its sound and makes its space glow.
-	// const colorValue = Math.ceil(Math.random() * 4);
-	// if (colorValue === 1){ // green
-	// 	sounds.playGreenSound();
-	// 	this.setGreenGlow();
-	// 	setTimeout(this.clearGreenGlow,1500);
-	// 	cpuInput.push(colorValue);//green value is sent to cpu input
-	// 	console.log(colorValue);
-	// 	console.log(cpuInput);
-	// } else if(colorValue === 2){ //red
-	// 	sounds.playRedSound();
-	// 	this.setRedGlow();
-	// 	setTimeout(this.clearRedGlow,1500);
-	// 	cpuInput.push(colorValue);//red value is sent to cpu input	
-	// 	console.log(colorValue);
-	// 	console.log(cpuInput);
-	// } else if(colorValue === 3){ //yellow
-	// 	sounds.playYellowSound();
-	// 	this.setYellowGlow();
-	// 	setTimeout(this.clearYellowGlow,1500);
-	// 	cpuInput.push(colorValue);//yellow value is sent to cpu input
-	// 	console.log(colorValue);
-	// 	console.log(cpuInput);
-	// } else if(colorValue === 4){ //blue
-	// 	sounds.playBlueSound();
-	// 	this.setBlueGlow();
-	// 	setTimeout(this.clearBlueGlow,1500);
-	// 	cpuInput.push(colorValue);//blue input is sent to cpu input
-	// 	console.log(colorValue);
-	// 	console.log(cpuInput);
-	// } return cpuInput;
-	// } 
 }
 
 const game = {
@@ -180,20 +147,34 @@ const game = {
 		console.log(colorValue);
 		console.log(cpuInput);
 	} return cpuInput;
-}, 
+	},
+	showPreviousColors(){
+		for (let i = 0; i <= cpuInput.length - 1; i++){
+			if (cpuInput[i] === 1){
+				sounds.playGreenSound();
+				colors.setGreenGlow();
+				setTimeout(colors.clearGreenGlow,1500);
+			}
+		}
+	},
+
 	startRound(){ //Gets the round started when user hits start button
 	 if(cpuInput.length < 1){ //If the length of the CPU input is less than one, you can start a round. 
-	 game.randomColor(); //A random color will be selected.
+	 this.randomColor(); //A random color will be selected.
+	} else if(cpuInput.length >= 1){ //Otherwise, if CPU input.length is greater than one
+	 this.showPreviousColors();
 	} else { //Otherwise, you'll be alerted that the round has already started. 
 	 alert(`You've already started a round`);
 	}
-},
-	inputCheck(){
-	 if(userInput.toString() === cpuInput.toString()){
-	 	this.points++;
-	 	pointTotal.textContent = `Points: ${this.points}`;
+	},
+
+	inputCheck(){ //Checks to see if user and CPU input match up. 
+	 if(userInput.toString() === cpuInput.toString()){ //If the user and cpu input are the same
+	 	this.points++; //The total points will increase by one
+	 	pointTotal.textContent = `Points: ${this.points}`; //DOM displays current points
 	 }
-	}
+	},
+
 }
 
 
