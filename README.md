@@ -2,7 +2,8 @@
 GA Project One Game
 
 -Game Descritpion: 
-Simon is a game of memorization. The goal of the game is to match the actions of the computer until you no longer can. 
+This is a game of memorization. The goal of the game is to match the actions of the computer until you no longer can.
+Mimick random sequences created by the computer in order to win. The first round is composed of 5 actions, the second round 7 actions, and third with 10 actions.
 
 
 
