@@ -5,8 +5,8 @@ const blueButton = document.getElementById('blue');
 const startButton = document.getElementById('start');
 const resetButton = document.getElementById('reset');
 const pointTotal = document.getElementById('points');
-const cpuInput = [];//Going to store the input of the game
-const userInput = [];//Going to store the input of the user
+let cpuInput = [];//Going to store the input of the game
+let userInput = [];//Going to store the input of the user
 
 //SOUNDS
 let greenSound = new Audio();//The sound effect for the green button
@@ -148,26 +148,36 @@ const game = {
 		console.log(cpuInput);
 	} return cpuInput;
 	},
-	showPreviousColors(){//Shows the previous colors and rings there sound for user reference
-		for (let i = 0; i <= cpuInput.length; i++){
+	showPreviousColors(){//Makes previously selected colors glow again and their sound chime in the correct sequence. 
+		//setInterval
+			let i = 0;
+			const interval = setInterval(prevColors, 2000); //Colors will display every 2 seconds.
+			function prevColors(){
 			if (cpuInput[i] === 1){//For Green
 				sounds.playGreenSound();
 				colors.setGreenGlow();
-				setTimeout(colors.clearGreenGlow,1500);
+				setTimeout(colors.clearGreenGlow,1500); 
+				i++;
 			} else if(cpuInput[i] === 2){//For Red
 				sounds.playRedSound();
 				colors.setRedGlow();
 				setTimeout(colors.clearRedGlow,1500);
+				i++;
 			} else if(cpuInput[i] === 3){//For Yellow
 				sounds.playYellowSound();
 				colors.setYellowGlow();
 				setTimeout(colors.clearYellowGlow,1500);
+				i++;
 			} else if(cpuInput[i] === 4){//For Blue
 				sounds.playBlueSound();
 				colors.setBlueGlow();
 				setTimeout(colors.clearBlueGlow,1500);
+				i++;
+			} else if(cpuInput.length === i){ //A new random color should be added onto the end of the sequence. 
+				game.randomColor();
+				clearInterval(interval); //The interval making the previous colors display is cleared
 			}
-		}
+		} 
 	},
 
 	startRound(){ //Gets the round started when user hits start button
@@ -175,7 +185,6 @@ const game = {
 	 this.randomColor(); //A random color will be selected.
 	} else if(cpuInput.length >= 1){ //Otherwise, if CPU input.length is greater than one
 	 this.showPreviousColors();
-	 this.randomColor();
 	} else { //Otherwise, you'll be alerted that the round has already started. 
 	 alert(`You've already started a round`);
 	}
@@ -185,8 +194,17 @@ const game = {
 	 if(userInput.toString() === cpuInput.toString()){ //If the user and cpu input are the same
 	 	this.points++; //The total points will increase by one
 	 	pointTotal.textContent = `Points: ${this.points}`; //DOM displays current points
+	 	this.clearUserInput();
 	 }
 	},
+
+    clearUserInput(){//Clears the current user input
+    	return userInput = [];
+    },
+
+    clearCPUInput(){//Clears the current CPU input
+    	return cpuInput = [];
+    } 
 
 }
 
