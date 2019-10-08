@@ -97,25 +97,25 @@ const colors = {//Houses all color related methods.
 		greenButton.style.filter = 'drop-shadow(0px -20px 90px rgba(128, 237, 133, .7))';
 	},
 	clearGreenGlow(){//Takes the glow away from the green button
-		greenButton.style.boxShadow ='';
+		greenButton.style.filter ='';
 	},
 	setRedGlow(){//Cause the red button to glow
-		redButton.style.boxShadow = '0px -15px 90px rgba(237, 56, 51, .6)';
+		redButton.style.filter = 'drop-shadow(0px -20px 90px rgba(237, 56, 51, .7)';
 	},
 	clearRedGlow(){//Takes away the glow from the red button
-		redButton.style.boxShadow = '';
+		redButton.style.filter = '';
 	},
 	setYellowGlow(){//Causes yellow button to glow
-		yellowButton.style.boxShadow = '0px -15px 90px rgba(249, 242, 80, .6)';		
+		yellowButton.style.filter = 'drop-shadow(0px -20px 90px rgba(249, 242, 80, .7))';		
 	},
 	clearYellowGlow(){//Takes away the glow from the yellow button
-		yellowButton.style.boxShadow = '';
+		yellowButton.style.filter = '';
 	},
 	setBlueGlow(){//Causes blue button to glow
-		blueButton.style.boxShadow = '0px -15px 90px rgba(101, 147, 234, .6)';
+		blueButton.style.filter = 'drop-shadow(0px -20px 90px rgba(101, 147, 234, .7))';
 	},
 	clearBlueGlow(){//Takes away the glow from the blue button
-		blueButton.style.boxShadow = '';
+		blueButton.style.filter = '';
 	}
 }
 
