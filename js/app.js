@@ -94,7 +94,7 @@ const sounds = { //Houses the sound effect functions for the game
 
 const colors = {//Houses all color related methods.
 	setGreenGlow(){//Causes the green button to glow
-		greenButton.style.boxShadow = '0px -15px 90px rgba(128, 237, 133, .6)';
+		greenButton.style.filter = 'drop-shadow(0px -20px 90px rgba(128, 237, 133, .7))';
 	},
 	clearGreenGlow(){//Takes the glow away from the green button
 		greenButton.style.boxShadow ='';
