@@ -22,6 +22,8 @@ yellowSound.src = 'Sounds/YellowSound.mp3';
 let blueSound = new Audio();//Sound effect for the blue button.
 blueSound.src = 'Sounds/BlueSound.mp3';
 
+let incorrectSound = new Audio();//Sound effect for wrong answers
+incorrectSound.src = 'Sounds/incorrect.mp3';
 
 //BUTTONS
 startButton.addEventListener('click', (e) =>{
@@ -32,9 +34,9 @@ resetButton.addEventListener('click', (e) =>{
 	game.clearUserInput();
 	game.clearCPUInput();
 	game.points = 0;
-	game.round = 0;
+	game.round = 1;
 	pointTotal.textContent = `Points: ${game.points}`;
-	currentRound.textContent = `Round: ${game.rounds}`;
+	currentRound.textContent = `Round: ${game.round}`;
 });
 
 greenButton.addEventListener('click', (e) =>{
@@ -89,6 +91,10 @@ const sounds = { //Houses the sound effect functions for the game
 
 	playBlueSound(){//Plays blue sound effect
 		blueSound.play();
+	},
+
+	playIncorrectSound(){
+		incorrectSound.play();
 	}
 }
 
@@ -198,13 +204,13 @@ const game = {
 	if (userInput.length != cpuInput.length){//If user and cpu length are not the same
 		for(let i = 0; i < userInput.length; i++){//For loop uses user input array's length as measurement. 
 			if(userInput[i] != cpuInput[i]){ //If the values in the array don't match up.
-				console.log('wrong');//Wrong notification is sent.
+				sounds.playIncorrectSound();//Wrong choice sound is played
 				this.clearUserInput();//User input is cleared
 				this.clearCPUInput();//CPU input is cleared
 			}
 		}
 	} else if(userInput.length === cpuInput.length && userInput.toString() != cpuInput.toString()){//If the user and cpu length are the same but the outputs are not the same. 
-		console.log('wrong');//Wrong notifcation is sent
+		sounds.playIncorrectSound();//Wrong choice sound is played
 		this.clearUserInput();//User input is cleared
 		this.clearCPUInput();//CPU input is also cleared
 	} else if(userInput.toString() === cpuInput.toString()){ //If the user and cpu input are the same
@@ -216,16 +222,16 @@ const game = {
 	 }
 	},
 	 
-	roundTracker(){
-    	if(this.round === 1 && cpuInput.length === 5){
+	roundTracker(){//Keeps track of what round the game is and the criteria for the game to advance to the next round. 
+    	if(this.round === 1 && cpuInput.length === 5){//Round one consists of a 5 sequence turn. 
     		this.round++;
     		this.clearCPUInput();
     		currentRound.textContent = `Round: ${this.round}`;
-    	} else if(this.round === 2 && cpuInput.length === 7){
+    	} else if(this.round === 2 && cpuInput.length === 7){//Round two consists of a 7 sequence turn
     		this.round++;
     		this.clearCPUInput();
     		currentRound.textContent = `Round: ${this.round}`;
-    	} else if(this.round === 3 && cpuInput.length === 10){
+    	} else if(this.round === 3 && cpuInput.length === 10){//Round three consists of a 10 sequence turn
     		this.round++;
     		this.clearCPUInput();
     		currentRound.textContent = `Round: ${this.round}`;
