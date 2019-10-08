@@ -196,10 +196,27 @@ const game = {
 	},
 
 	inputCheck(){ //Checks to see if user and CPU input match up. 
-	 if(userInput.toString() === cpuInput.toString()){ //If the user and cpu input are the same
-	 	this.points++; //The total points will increase by one
-	 	pointTotal.textContent = `Points: ${this.points}`; //DOM displays current points
-	 	this.clearUserInput();
+	if (userInput.length != cpuInput.length){//Should check the input for user and cpu every input 
+		for(let i = 0; i < userInput.length; i++){
+			if(userInput[i] != cpuInput[i]){
+				console.log('wrong');
+				this.clearUserInput();
+				this.clearCPUInput();
+			}
+		}
+	} else if(userInput.length === cpuInput.length && userInput.toString() != cpuInput.toString()){
+		console.log('wrong');
+		this.clearUserInput();
+		this.clearCPUInput();
+	} else if(userInput.toString() === cpuInput.toString()){ //If the user and cpu input are the same
+		this.points++; //The total points will increase by one
+		pointTotal.textContent = `Points: ${this.points}`; //DOM displays current points
+		this.clearUserInput();
+		this.play();
+	 // if(userInput.toString() === cpuInput.toString()){ //If the user and cpu input are the same
+	 // 	this.points++; //The total points will increase by one
+	 // 	pointTotal.textContent = `Points: ${this.points}`; //DOM displays current points
+	 // 	this.clearUserInput();
 	 }
 	},
 
