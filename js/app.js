@@ -76,6 +76,7 @@ blueButton.addEventListener('click', (e) =>{
 
 const sounds = { //Houses the sound effect functions for the game
 	playGreenSound(){ //Plays green sound effect
+		greenSound.pause();
 		greenSound.play(); 
 	},
 
