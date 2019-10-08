@@ -76,7 +76,6 @@ blueButton.addEventListener('click', (e) =>{
 
 const sounds = { //Houses the sound effect functions for the game
 	playGreenSound(){ //Plays green sound effect
-		greenSound.pause();
 		greenSound.play(); 
 	},
 
@@ -122,7 +121,7 @@ const colors = {//Houses all color related methods.
 
 const game = {
 	points: 0,
-	rounds: 0,
+	round: 1,
 	randomColor(){ //Picks a random color and plays its sound and makes its space glow.
 	const colorValue = Math.ceil(Math.random() * 4);
 	if (colorValue === 1){ // green
@@ -196,29 +195,42 @@ const game = {
 	},
 
 	inputCheck(){ //Checks to see if user and CPU input match up. 
-	if (userInput.length != cpuInput.length){//Should check the input for user and cpu every input 
-		for(let i = 0; i < userInput.length; i++){
-			if(userInput[i] != cpuInput[i]){
-				console.log('wrong');
-				this.clearUserInput();
-				this.clearCPUInput();
+	if (userInput.length != cpuInput.length){//If user and cpu length are not the same
+		for(let i = 0; i < userInput.length; i++){//For loop uses user input array's length as measurement. 
+			if(userInput[i] != cpuInput[i]){ //If the values in the array don't match up.
+				console.log('wrong');//Wrong notification is sent.
+				this.clearUserInput();//User input is cleared
+				this.clearCPUInput();//CPU input is cleared
 			}
 		}
-	} else if(userInput.length === cpuInput.length && userInput.toString() != cpuInput.toString()){
-		console.log('wrong');
-		this.clearUserInput();
-		this.clearCPUInput();
+	} else if(userInput.length === cpuInput.length && userInput.toString() != cpuInput.toString()){//If the user and cpu length are the same but the outputs are not the same. 
+		console.log('wrong');//Wrong notifcation is sent
+		this.clearUserInput();//User input is cleared
+		this.clearCPUInput();//CPU input is also cleared
 	} else if(userInput.toString() === cpuInput.toString()){ //If the user and cpu input are the same
 		this.points++; //The total points will increase by one
 		pointTotal.textContent = `Points: ${this.points}`; //DOM displays current points
 		this.clearUserInput();
+		this.roundTracker();
 		this.play();
-	 // if(userInput.toString() === cpuInput.toString()){ //If the user and cpu input are the same
-	 // 	this.points++; //The total points will increase by one
-	 // 	pointTotal.textContent = `Points: ${this.points}`; //DOM displays current points
-	 // 	this.clearUserInput();
 	 }
 	},
+	 
+	roundTracker(){
+    	if(this.round === 1 && cpuInput.length === 5){
+    		this.round++;
+    		this.clearCPUInput();
+    		currentRound.textContent = `Round: ${this.round}`;
+    	} else if(this.round === 2 && cpuInput.length === 7){
+    		this.round++;
+    		this.clearCPUInput();
+    		currentRound.textContent = `Round: ${this.round}`;
+    	} else if(this.round === 3 && cpuInput.length === 10){
+    		this.round++;
+    		this.clearCPUInput();
+    		currentRound.textContent = `Round: ${this.round}`;
+    	}
+    }, 
 
     clearUserInput(){//Clears the current user input
     	return userInput = [];
@@ -226,8 +238,7 @@ const game = {
 
     clearCPUInput(){//Clears the current CPU input
     	return cpuInput = [];
-    } 
-
+    }
 }
 
 
