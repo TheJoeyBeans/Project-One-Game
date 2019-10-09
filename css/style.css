@@ -4,6 +4,10 @@ body{
 	position: relative;
 }
 
+input{
+	outline: none;
+}
+
 #importantInfo{
 	display: flex;
 	flex-direction: row;

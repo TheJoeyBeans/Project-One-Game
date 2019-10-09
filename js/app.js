@@ -9,7 +9,7 @@ const currentRound = document.getElementById('rounds');
 let cpuInput = [];//Going to store the input of the game
 let userInput = [];//Going to store the input of the user
 
-//SOUNDS
+// SOUNDS
 let greenSound = new Audio();//The sound effect for the green button
 greenSound.src = 'Sounds/GreenSound.mp3';
 
@@ -25,7 +25,7 @@ blueSound.src = 'Sounds/BlueSound.mp3';
 let incorrectSound = new Audio();//Sound effect for wrong answers
 incorrectSound.src = 'Sounds/incorrect.mp3';
 
-//BUTTONS
+// BUTTONS
 startButton.addEventListener('click', (e) =>{
 	if(cpuInput.length === 0){
 		game.play();
@@ -167,27 +167,27 @@ const game = {
 	showPreviousColors(){//Makes previously selected colors glow again and their sound chime in the correct sequence. 
 		//setInterval
 			let i = 0;
-			const interval = setInterval(prevColors, 2000); //Colors will display every 2 seconds.
+			const interval = setInterval(prevColors, 1000); //Colors will display every 2 seconds.
 			function prevColors(){
 			if (cpuInput[i] === 1){//For Green
 				sounds.playGreenSound();
 				colors.setGreenGlow();
-				setTimeout(colors.clearGreenGlow,1500); 
+				setTimeout(colors.clearGreenGlow,400); 
 				i++;
 			} else if(cpuInput[i] === 2){//For Red
 				sounds.playRedSound();
 				colors.setRedGlow();
-				setTimeout(colors.clearRedGlow,1500);
+				setTimeout(colors.clearRedGlow,400);
 				i++;
 			} else if(cpuInput[i] === 3){//For Yellow
 				sounds.playYellowSound();
 				colors.setYellowGlow();
-				setTimeout(colors.clearYellowGlow,1500);
+				setTimeout(colors.clearYellowGlow,400);
 				i++;
 			} else if(cpuInput[i] === 4){//For Blue
 				sounds.playBlueSound();
 				colors.setBlueGlow();
-				setTimeout(colors.clearBlueGlow,1500);
+				setTimeout(colors.clearBlueGlow,400);
 				i++;
 			} else if(cpuInput.length === i){ //A new random color should be added onto the end of the sequence. 
 				game.randomColor();
