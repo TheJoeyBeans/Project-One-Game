@@ -27,7 +27,11 @@ incorrectSound.src = 'Sounds/incorrect.mp3';
 
 //BUTTONS
 startButton.addEventListener('click', (e) =>{
-	game.play();
+	if(cpuInput.length === 0){
+		game.play();
+	}else{
+		alert(`You've already started the game. Press restart if you'd like to reset`);
+	}
 });
 
 resetButton.addEventListener('click', (e) =>{
