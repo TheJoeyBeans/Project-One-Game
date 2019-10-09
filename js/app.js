@@ -98,7 +98,7 @@ const sounds = { //Houses the sound effect functions for the game
 	},
 
 	playIncorrectSound(){
-		incorrectSound.play();
+		incorrectSound.play()
 	}
 }
 

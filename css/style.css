@@ -1,5 +1,7 @@
+
 body{
 	background-color:#000;
+	position: relative;
 }
 
 #importantInfo{
@@ -7,16 +9,25 @@ body{
 	flex-direction: row;
 	justify-content: center;
 	color: #fff;
-	font-size: 25px;
-	padding: 25px 0 0 0;
+	padding: 15px 0 15px 0;
+	font-family: 'Roboto Mono', monospace, sans-serif;
+	font-size: 35px;
 }
+
+#gameButtons{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 15px 0 15px 0;
+}
+
 
 #gameBoard{
   display: grid;
   grid-template-columns: 250px 250px;
   grid-template-rows: 250px 250px;
   justify-content: center;
-  padding: 100px 0;
+  padding: 50px 0 40px 0;
 }
 
 /*#green{
@@ -57,12 +68,36 @@ body{
 
 .gameButton{
 	margin: 0 20px;
+	font-size: 25px;
+	transition-duration: 0.4s;
+}
+
+.gameButton:hover{
+	background-color: #c2c2a3;
+	color: #fff;
 }
 
 .gameInfo{
 	margin: 0 20px;
 }
+
 .colorButton{
 	padding: 50px 50px;
 	text-align: center;
 }
+
+
+/*@media screen and (max-width: 600px){
+	#gameBoard{
+		grid-template-columns:100px 100px; 
+		grid-template-rows:100px 100px;
+	}
+
+	#importantInfo{
+		font-size: 15px;
+	}
+
+	.gameButton{
+		font-size: 15px;
+	}
+}*/
