@@ -134,7 +134,7 @@ const colors = {//Houses all color related methods.
 	backToNormal(){
 		greenButton.src = 'Buttons/GreenGameButton.png';
 		yellowButton.src = 'Buttons/YellowGameButton.png';
-		blueButton.src = 'Buttons/blueGameButton.png';
+		blueButton.src = 'Buttons/BlueGameButton.png';
 		colors.clearGreenGlow();
 		colors.clearYellowGlow();
 		colors.clearBlueGlow();
