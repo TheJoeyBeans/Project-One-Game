@@ -8,6 +8,26 @@ input{
 	outline: none;
 }
 
+.gameButton{
+	margin: 0 20px;
+	font-size: 25px;
+	transition-duration: 0.4s;
+}
+
+.gameButton:hover{
+	background-color: #c2c2a3;
+	color: #fff;
+}
+
+.gameInfo{
+	margin: 0 20px;
+}
+
+.colorButton{
+	padding: 50px 50px;
+	text-align: center;
+}
+
 #importantInfo{
 	display: flex;
 	flex-direction: row;
@@ -70,26 +90,24 @@ input{
  	filter: drop-shadow(0px -20px 90px rgba(101, 147, 234, .7));
 }
 
-.gameButton{
-	margin: 0 20px;
-	font-size: 25px;
-	transition-duration: 0.4s;
+#nextRound{
+  visibility: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -25px -100px;
+  text-align: center;
+  height: 200px;
+  border-radius: 60%;
 }
 
-.gameButton:hover{
-	background-color: #c2c2a3;
-	color: #fff;
-}
 
-.gameInfo{
-	margin: 0 20px;
-}
-
-.colorButton{
-	padding: 50px 50px;
+/*	position: absolute;
+	top: 50%;
+	bottom: 50%;
 	text-align: center;
-}
-
+	font-size: 10px;
+	z-index: 95;*/
 
 /*@media screen and (max-width: 600px){
 	#gameBoard{

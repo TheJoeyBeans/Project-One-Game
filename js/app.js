@@ -4,6 +4,7 @@ const yellowButton = document.getElementById('yellow');
 const blueButton = document.getElementById('blue');
 const startButton = document.getElementById('start');
 const resetButton = document.getElementById('reset');
+const nextRoundButton = document.getElementById('nextRound');
 const pointTotal = document.getElementById('points');
 const currentRound = document.getElementById('rounds');
 let cpuInput = [];//Going to store the input of the game
@@ -42,6 +43,10 @@ resetButton.addEventListener('click', (e) =>{
 	pointTotal.textContent = `Points: ${game.points}`;
 	currentRound.textContent = `Round: ${game.round}`;
 });
+
+// nextButton.addEventListener('click', (e) =>{
+// 	console.log('test');
+// });
 
 greenButton.addEventListener('click', (e) =>{
 	const green = e.target.id;//'green' is stored here
@@ -139,28 +144,28 @@ const game = {
 	if (colorValue === 1){ // green
 		sounds.playGreenSound();
 		colors.setGreenGlow();
-		setTimeout(colors.clearGreenGlow,1500);
+		setTimeout(colors.clearGreenGlow,400);
 		cpuInput.push(colorValue);//green value is sent to cpu input
 		console.log(colorValue);
 		console.log(cpuInput);
 	} else if(colorValue === 2){ //red
 		sounds.playRedSound();
 		colors.setRedGlow();
-		setTimeout(colors.clearRedGlow,1500);
+		setTimeout(colors.clearRedGlow,400);
 		cpuInput.push(colorValue);//red value is sent to cpu input	
 		console.log(colorValue);
 		console.log(cpuInput);
 	} else if(colorValue === 3){ //yellow
 		sounds.playYellowSound();
 		colors.setYellowGlow();
-		setTimeout(colors.clearYellowGlow,1500);
+		setTimeout(colors.clearYellowGlow,400);
 		cpuInput.push(colorValue);//yellow value is sent to cpu input
 		console.log(colorValue);
 		console.log(cpuInput);
 	} else if(colorValue === 4){ //blue
 		sounds.playBlueSound();
 		colors.setBlueGlow();
-		setTimeout(colors.clearBlueGlow,1500);
+		setTimeout(colors.clearBlueGlow,400);
 		cpuInput.push(colorValue);//blue input is sent to cpu input
 		console.log(colorValue);
 		console.log(cpuInput);
@@ -231,17 +236,24 @@ const game = {
 	roundTracker(){//Keeps track of what round the game is and the criteria for the game to advance to the next round. 
     	if(this.round === 1 && cpuInput.length === 5){//Round one consists of a 5 sequence turn. 
     		this.round++;
+    		this.roundButton();
     		this.clearCPUInput();
     		currentRound.textContent = `Round: ${this.round}`;
     	} else if(this.round === 2 && cpuInput.length === 7){//Round two consists of a 7 sequence turn
     		this.round++;
+    		this.roundButton();
     		this.clearCPUInput();
     		currentRound.textContent = `Round: ${this.round}`;
     	} else if(this.round === 3 && cpuInput.length === 10){//Round three consists of a 10 sequence turn
     		this.round++;
+    		this.roundButton();
     		this.clearCPUInput();
     		currentRound.textContent = `Round: ${this.round}`;
     	}
+    },
+
+    roundButton(){//Causes the start next round button to appear at the start of each round after 1. 
+    	nextRoundButton.style.visibility = 'visible';
     }, 
 
     clearUserInput(){//Clears the current user input
