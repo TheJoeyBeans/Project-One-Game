@@ -121,6 +121,24 @@ const colors = {//Houses all color related methods.
 	},
 	clearBlueGlow(){//Takes away the glow from the blue button
 		blueButton.style.filter = '';
+	},
+	wrongSelection(){
+		greenButton.src = 'Buttons/IncorrectOne.png';
+		yellowButton.src = 'Buttons/IncorrectThree.png';
+		blueButton.src = 'Buttons/IncorrectFour.png';
+		greenButton.style.filter = 'drop-shadow(0px -20px 90px rgba(237, 56, 51, .7)';
+		yellowButton.style.filter = 'drop-shadow(0px -20px 90px rgba(237, 56, 51, .7)';
+		blueButton.style.filter = 'drop-shadow(0px -20px 90px rgba(237, 56, 51, .7)';
+		colors.setRedGlow();
+	},
+	backToNormal(){
+		greenButton.src = 'Buttons/GreenGameButton.png';
+		yellowButton.src = 'Buttons/YellowGameButton.png';
+		blueButton.src = 'Buttons/blueGameButton.png';
+		colors.clearGreenGlow();
+		colors.clearYellowGlow();
+		colors.clearBlueGlow();
+		colors.clearRedGlow();
 	}
 }
 
@@ -196,11 +214,15 @@ const game = {
 		for(let i = 0; i < userInput.length; i++){//For loop uses user input array's length as measurement. 
 			if(userInput[i] != cpuInput[i]){ //If the values in the array don't match up.
 				sounds.playIncorrectSound();//Wrong choice sound is played
+				colors.wrongSelection();
+				setTimeout(colors.backToNormal,1000);
 				this.resetGame();
 			}
 		}
 	} else if(userInput.length === cpuInput.length && userInput.toString() != cpuInput.toString()){//If the user and cpu length are the same but the outputs are not the same. 
 		sounds.playIncorrectSound();//Wrong choice sound is played
+		colors.wrongSelection();
+		setTimeout(colors.backToNormal,1000);
 		this.resetGame();
 	} else if(userInput.toString() === cpuInput.toString()){ //If the user and cpu input are the same
 		this.points++; //The total points will increase by one
