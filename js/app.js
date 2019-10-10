@@ -35,7 +35,7 @@ startButton.addEventListener('click', (e) =>{
 	}
 });
 
-resetButton.addEventListener('click', (e) =>{
+resetButton.addEventListener('click', (e) =>{//Resets all aspects of the game just as the user found the page
 	game.clearUserInput();
 	game.clearCPUInput();
 	game.points = 0;
@@ -44,9 +44,10 @@ resetButton.addEventListener('click', (e) =>{
 	currentRound.textContent = `Round: ${game.round}`;
 });
 
-// nextButton.addEventListener('click', (e) =>{
-// 	console.log('test');
-// });
+nextRoundButton.addEventListener('click', (e) =>{//Starts the next round of gameplay
+	nextRoundButton.style.visibility = 'hidden';
+	game.play();	
+});
 
 greenButton.addEventListener('click', (e) =>{
 	const green = e.target.id;//'green' is stored here
