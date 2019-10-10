@@ -91,21 +91,25 @@ input{
 }
 
 #nextRound{
-  visibility: hidden;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin: -25px -100px;
-  text-align: center;
-  height: 200px;
-  border-radius: 60%;
-  outline: none;
+	visibility: hidden;
+ 	position: absolute;
+ 	font-family: 'Roboto Mono', monospace, sans-serif;
+	background-color: rgba(0, 0, 0, .2);
+	color:#fff;
+	left: 50%;
+	top: 50%;
+	margin: -100px -170px;
+	text-align: center;
+	height: 335px;
+	width: 335px;
+	border-radius: 60%;
+	border: none;
+	outline: none;
+	transition-duration: 0.4s;
 }
 
-#deathScreen{
-	color:#ff3300;
-	font-family: 'Roboto Mono', monospace, sans-serif;
-	font-size: 35px;
+#nextRound:hover {
+ 	color: rgba(255, 255, 255, .3);
 }
 
 /*	position: absolute;

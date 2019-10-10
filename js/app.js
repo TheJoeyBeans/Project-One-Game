@@ -49,8 +49,6 @@ greenButton.addEventListener('click', (e) =>{
 	sounds.playGreenSound(); //green sound plays
 	userInput.push(1); //green value is sent to user input
 	game.inputCheck();
-	console.log(green);
-	console.log(userInput);
 });
 
 redButton.addEventListener('click', (e) =>{
@@ -58,8 +56,6 @@ redButton.addEventListener('click', (e) =>{
 	sounds.playRedSound(); //red sound plays
 	userInput.push(2); //red value is sent to user input
 	game.inputCheck();
-	console.log(red);
-	console.log(userInput);
 });
 
 yellowButton.addEventListener('click', (e) =>{
@@ -67,8 +63,6 @@ yellowButton.addEventListener('click', (e) =>{
 	sounds.playYellowSound(); //yellow sound plays
 	userInput.push(3); //yellow value is sent to user input
 	game.inputCheck();
-	console.log(yellow);
-	console.log(userInput);
 });
 
 blueButton.addEventListener('click', (e) =>{
@@ -76,8 +70,6 @@ blueButton.addEventListener('click', (e) =>{
 	sounds.playBlueSound();//blue sound plays
 	userInput.push(4);//blue value is sent to user input
 	game.inputCheck();
-	console.log(blue);
-	console.log(userInput);
 });
 
 
@@ -142,29 +134,21 @@ const game = {
 		colors.setGreenGlow();
 		setTimeout(colors.clearGreenGlow,400);
 		cpuInput.push(colorValue);//green value is sent to cpu input
-		console.log(colorValue);
-		console.log(cpuInput);
 	} else if(colorValue === 2){ //red
 		sounds.playRedSound();
 		colors.setRedGlow();
 		setTimeout(colors.clearRedGlow,400);
 		cpuInput.push(colorValue);//red value is sent to cpu input	
-		console.log(colorValue);
-		console.log(cpuInput);
 	} else if(colorValue === 3){ //yellow
 		sounds.playYellowSound();
 		colors.setYellowGlow();
 		setTimeout(colors.clearYellowGlow,400);
 		cpuInput.push(colorValue);//yellow value is sent to cpu input
-		console.log(colorValue);
-		console.log(cpuInput);
 	} else if(colorValue === 4){ //blue
 		sounds.playBlueSound();
 		colors.setBlueGlow();
 		setTimeout(colors.clearBlueGlow,400);
 		cpuInput.push(colorValue);//blue input is sent to cpu input
-		console.log(colorValue);
-		console.log(cpuInput);
 	} return cpuInput;
 	},
 	showPreviousColors(){//Makes previously selected colors glow again and their sound chime in the correct sequence. 
