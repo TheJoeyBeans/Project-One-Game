@@ -36,12 +36,7 @@ startButton.addEventListener('click', (e) =>{
 });
 
 resetButton.addEventListener('click', (e) =>{//Resets all aspects of the game just as the user found the page
-	game.clearUserInput();
-	game.clearCPUInput();
-	game.points = 0;
-	game.round = 1;
-	pointTotal.textContent = `Points: ${game.points}`;
-	currentRound.textContent = `Round: ${game.round}`;
+	game.resetGame();
 });
 
 nextRoundButton.addEventListener('click', (e) =>{//Starts the next round of gameplay
@@ -217,14 +212,12 @@ const game = {
 		for(let i = 0; i < userInput.length; i++){//For loop uses user input array's length as measurement. 
 			if(userInput[i] != cpuInput[i]){ //If the values in the array don't match up.
 				sounds.playIncorrectSound();//Wrong choice sound is played
-				this.clearUserInput();//User input is cleared
-				this.clearCPUInput();//CPU input is cleared
+				this.resetGame();
 			}
 		}
 	} else if(userInput.length === cpuInput.length && userInput.toString() != cpuInput.toString()){//If the user and cpu length are the same but the outputs are not the same. 
 		sounds.playIncorrectSound();//Wrong choice sound is played
-		this.clearUserInput();//User input is cleared
-		this.clearCPUInput();//CPU input is also cleared
+		this.resetGame();
 	} else if(userInput.toString() === cpuInput.toString()){ //If the user and cpu input are the same
 		this.points++; //The total points will increase by one
 		pointTotal.textContent = `Points: ${this.points}`; //DOM displays current points
@@ -267,6 +260,15 @@ const game = {
 
     clearCPUInput(){//Clears the current CPU input
     	return cpuInput = [];
+    },
+
+    resetGame(){//Clears everything from the game. 
+    	this.clearUserInput();
+    	this.clearCPUInput();
+    	game.points = 0;
+    	game.round = 1;
+		pointTotal.textContent = `Points: ${game.points}`;
+		currentRound.textContent = `Round: ${game.round}`;
     }
 }
 
