@@ -91,8 +91,12 @@ const sounds = { //Houses the sound effect functions for the game
 	},
 
 	playIncorrectSound(){
-		if(cpuInput.length > 1){
-		incorrectSound.play()
+		if(cpuInput.length >= 1){
+		greenSound.pause();
+		redSound.pause();
+		yellowSound.pause();
+		blueSound.pause();	
+		incorrectSound.play();
 	}
 	}
 }
@@ -145,6 +149,7 @@ const colors = {//Houses all color related methods.
 const game = {
 	points: 0,
 	round: 1,
+
 	randomColor(){ //Picks a random color and plays its sound and makes its space glow.
 	const colorValue = Math.ceil(Math.random() * 4);
 	if (colorValue === 1){ // green
@@ -169,6 +174,7 @@ const game = {
 		cpuInput.push(colorValue);//blue input is sent to cpu input
 	} return cpuInput;
 	},
+
 	showPreviousColors(){//Makes previously selected colors glow again and their sound chime in the correct sequence. 
 		//setInterval
 			let i = 0;
@@ -221,8 +227,8 @@ const game = {
 		}
 	} else if(userInput.length === cpuInput.length && userInput.toString() != cpuInput.toString()){//If the user and cpu length are the same but the outputs are not the same. 
 		sounds.playIncorrectSound();//Wrong choice sound is played
-		colors.wrongSelection();
-		setTimeout(colors.backToNormal,1000);
+		colors.wrongSelection();//Color pallet of the gameboard changes to red.
+		setTimeout(colors.backToNormal,1000);//Everything goes back to normal after a second.
 		this.resetGame();
 	} else if(userInput.toString() === cpuInput.toString()){ //If the user and cpu input are the same
 		this.points++; //The total points will increase by one
