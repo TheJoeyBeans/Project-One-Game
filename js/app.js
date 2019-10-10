@@ -229,31 +229,35 @@ const game = {
 		pointTotal.textContent = `Points: ${this.points}`; //DOM displays current points
 		this.clearUserInput();
 		this.roundTracker();
-		this.play();
+		if(cpuInput.length > 0){
+			this.play();
+		}
 	 }
 	},
 	 
 	roundTracker(){//Keeps track of what round the game is and the criteria for the game to advance to the next round. 
     	if(this.round === 1 && cpuInput.length === 5){//Round one consists of a 5 sequence turn. 
     		this.round++;
-    		this.roundButton();
     		this.clearCPUInput();
+    		this.roundButton();
     		currentRound.textContent = `Round: ${this.round}`;
     	} else if(this.round === 2 && cpuInput.length === 7){//Round two consists of a 7 sequence turn
     		this.round++;
-    		this.roundButton();
     		this.clearCPUInput();
+    		this.roundButton();
     		currentRound.textContent = `Round: ${this.round}`;
     	} else if(this.round === 3 && cpuInput.length === 10){//Round three consists of a 10 sequence turn
     		this.round++;
-    		this.roundButton();
     		this.clearCPUInput();
+    		this.roundButton();
     		currentRound.textContent = `Round: ${this.round}`;
     	}
     },
 
     roundButton(){//Causes the start next round button to appear at the start of each round after 1. 
-    	nextRoundButton.style.visibility = 'visible';
+    	if(this.round > 1 && cpuInput.length === 0){
+    		nextRoundButton.style.visibility = 'visible';
+    	}
     }, 
 
     clearUserInput(){//Clears the current user input
