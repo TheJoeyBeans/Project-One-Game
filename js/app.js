@@ -29,7 +29,7 @@ incorrectSound.src = 'Sounds/incorrect.mp3';
 // BUTTONS
 startButton.addEventListener('click', (e) =>{
 	if(cpuInput.length === 0){
-		game.play();
+		game.gamePlay();
 	}else{
 		alert(`You've already started the game. Press restart if you'd like to reset`);
 	}
@@ -41,7 +41,7 @@ resetButton.addEventListener('click', (e) =>{//Resets all aspects of the game ju
 
 nextRoundButton.addEventListener('click', (e) =>{//Starts the next round of gameplay
 	nextRoundButton.style.visibility = 'hidden';
-	game.play();	
+	game.gamePlay();	
 });
 
 greenButton.addEventListener('click', (e) =>{
@@ -199,7 +199,7 @@ const game = {
 		} 
 	},
 
-	play(){ //Gets the round started when user hits start button
+	gamePlay(){ //Gets the round started when user hits start button
 	 if(cpuInput.length < 1){ //If the length of the CPU input is less than one, you can start a round. 
 	 this.randomColor(); //A random color will be selected.
 	} else if(cpuInput.length >= 1){ //Otherwise, if CPU input.length is greater than one
@@ -224,7 +224,7 @@ const game = {
 		this.clearUserInput();
 		this.roundTracker();
 		if(cpuInput.length > 0){
-			this.play();
+			this.gamePlay();
 		}
 	 }
 	},
@@ -245,11 +245,23 @@ const game = {
     		this.clearCPUInput();
     		this.roundButton();
     		currentRound.textContent = `Round: ${this.round}`;
+    	} else if(this.round === 4 && cpuInput.length === 13){
+    		this.round++;
+    		this.clearCPUInput();
+    		this.roundButton();
+    	} else if(this.round === 5 && cpuInput.length === 15){
+    		alert(`Congratulations! You've won! Now see how far you can make it in infinite mode!`);
+    		this.clearCPUInput();
+    		this.round = 'Infinite Mode';
+    		this.points = 0;
+    		this.roundButton();
+    		currentRound.textContent = `${this.round}`;
+    		pointTotal.textContent = `Points: ${this.points}`;
     	}
     },
 
     roundButton(){//Causes the start next round button to appear at the start of each round after 1. 
-    	if(this.round > 1 && cpuInput.length === 0){
+    	if(this.round > 1 && cpuInput.length === 0 || this.round === 'Infinite Mode' && cpuInput.length === 0){
     		nextRoundButton.style.visibility = 'visible';
     	}
     }, 

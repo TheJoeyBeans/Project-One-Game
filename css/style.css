@@ -102,6 +102,11 @@ input{
   outline: none;
 }
 
+#deathScreen{
+	color:#ff3300;
+	font-family: 'Roboto Mono', monospace, sans-serif;
+	font-size: 35px;
+}
 
 /*	position: absolute;
 	top: 50%;
