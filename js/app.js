@@ -27,7 +27,7 @@ let incorrectSound = new Audio();//Sound effect for wrong answers
 incorrectSound.src = 'Sounds/incorrect.mp3';
 
 // BUTTONS
-startButton.addEventListener('click', (e) =>{
+startButton.addEventListener('click', (e) =>{//Used to initally start the game.
 	if(cpuInput.length === 0){
 		game.gamePlay();
 	}else{
@@ -154,7 +154,7 @@ const game = {
 	showPreviousColors(){//Makes previously selected colors glow again and their sound chime in the correct sequence. 
 		//setInterval
 			let i = 0;
-			const interval = setInterval(prevColors, 1000); //Colors will display every 2 seconds.
+			const interval = setInterval(prevColors, 1000); //Colors will display on an interval of every second.
 			function prevColors(){
 			if (cpuInput[i] === 1){//For Green
 				sounds.playGreenSound();
@@ -229,14 +229,14 @@ const game = {
     		this.clearCPUInput();
     		this.roundButton();
     		currentRound.textContent = `Round: ${this.round}`;
-    	} else if(this.round === 4 && cpuInput.length === 13){
+    	} else if(this.round === 4 && cpuInput.length === 13){//Round four consists of a 13 sequence turn
     		this.round++;
     		this.clearCPUInput();
     		this.roundButton();
-    	} else if(this.round === 5 && cpuInput.length === 15){
+    	} else if(this.round === 5 && cpuInput.length === 15){//Round five, the final round, consists of a 15 sequence turn
     		alert(`Congratulations! You've won! Now see how far you can make it in infinite mode!`);
     		this.clearCPUInput();
-    		this.round = 'Infinite Mode';
+    		this.round = 'Infinite Mode'; //After clearing round five, game turns into infinite mode. 
     		this.points = 0;
     		this.roundButton();
     		currentRound.textContent = `${this.round}`;
@@ -263,8 +263,8 @@ const game = {
     	this.clearCPUInput();
     	game.points = 0;
     	game.round = 1;
-		pointTotal.textContent = `Points: ${game.points}`;
-		currentRound.textContent = `Round: ${game.round}`;
+		pointTotal.textContent = `Points: ${this.points}`;
+		currentRound.textContent = `Round: ${this.round}`;
     }
 }
 

@@ -91,7 +91,7 @@ input{
 }
 
 #nextRound{
-	visibility: hidden;
+	/*visibility: hidden;*/
  	position: absolute;
  	font-family: 'Roboto Mono', monospace, sans-serif;
 	background-color: rgba(0, 0, 0, .2);
@@ -112,17 +112,16 @@ input{
  	color: rgba(255, 255, 255, .3);
 }
 
-/*	position: absolute;
-	top: 50%;
-	bottom: 50%;
-	text-align: center;
-	font-size: 10px;
-	z-index: 95;*/
 
-/*@media screen and (max-width: 600px){
+@media screen and (max-width: 600px){
 	#gameBoard{
-		grid-template-columns:100px 100px; 
-		grid-template-rows:100px 100px;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin: 0 auto;
+		width: 300px;
+		height: 300px;
 	}
 
 	#importantInfo{
@@ -132,4 +131,9 @@ input{
 	.gameButton{
 		font-size: 15px;
 	}
-}*/
+
+	input{
+		height: 150px;
+		width: 150px;
+	}
+}
