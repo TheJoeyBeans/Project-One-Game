@@ -127,13 +127,15 @@ const colors = {//Houses all color related methods.
 		blueButton.style.filter = '';
 	},
 	wrongSelection(){
-		greenButton.src = 'Buttons/IncorrectOne.png';
-		yellowButton.src = 'Buttons/IncorrectThree.png';
-		blueButton.src = 'Buttons/IncorrectFour.png';
-		greenButton.style.filter = 'drop-shadow(0px -20px 90px rgba(237, 56, 51, .7)';
-		yellowButton.style.filter = 'drop-shadow(0px -20px 90px rgba(237, 56, 51, .7)';
-		blueButton.style.filter = 'drop-shadow(0px -20px 90px rgba(237, 56, 51, .7)';
-		colors.setRedGlow();
+		if(cpuInput.length >= 1){
+			greenButton.src = 'Buttons/IncorrectOne.png';
+			yellowButton.src = 'Buttons/IncorrectThree.png';
+			blueButton.src = 'Buttons/IncorrectFour.png';
+			greenButton.style.filter = 'drop-shadow(0px -20px 90px rgba(237, 56, 51, .7)';
+			yellowButton.style.filter = 'drop-shadow(0px -20px 90px rgba(237, 56, 51, .7)';
+			blueButton.style.filter = 'drop-shadow(0px -20px 90px rgba(237, 56, 51, .7)';
+			colors.setRedGlow();
+		}
 	},
 	backToNormal(){
 		greenButton.src = 'Buttons/GreenGameButton.png';
